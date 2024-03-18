@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/NavBar/NavBar";
+import SplineContainer from "@/components/SplineContainer/SplineContainer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NavBar />
+        <SplineContainer />
         {children}
       </body>
     </html>

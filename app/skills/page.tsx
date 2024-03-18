@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Skills() {
   return (
     <main className="flex flex-col items-center justify-between p-24">
       <h1>{`Hi, I'm Bengemin!`}</h1>
