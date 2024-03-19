@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        custom_black: "#282834",
+        custom_white: "#f8f8ff",
+        custom_accent: "#7888f3",
+        custom_accent2: "#3b3d59",
+      },
       fontFamily: {},
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

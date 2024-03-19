@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "../styles/globals.css";
 import NavBar from "@/components/NavBar/NavBar";
 import SplineContainer from "@/components/SplineContainer/SplineContainer";
+import WaveBG from "@/components/WaveBG/WaveBG";
 
-const inter = Inter({ subsets: ["latin"] });
+const openSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: ".JB Fullstack Developer Web Portfolio",
@@ -18,10 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={openSans.className}>
         <NavBar />
         <SplineContainer />
         {children}
+        <WaveBG />
       </body>
     </html>
   );

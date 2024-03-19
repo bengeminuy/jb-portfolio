@@ -10,9 +10,9 @@ interface SplineObject {
   };
 }
 
-import Spline from "@splinetool/react-spline";
+const Spline = React.lazy(() => import("@splinetool/react-spline"));
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function SplineContainer() {
   const avatar = useRef<SplineObject | null>();
