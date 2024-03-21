@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@gsap/react": "^2.1.0",
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^1.0.67",
+    "framer-motion": "^11.0.17",
     "gsap": "^3.12.5",
     "next": "14.1.0",
     "react": "^18",

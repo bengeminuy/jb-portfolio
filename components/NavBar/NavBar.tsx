@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 import "../../styles/menu.css";
+import "../../styles/hover_pulse.css";
 import "../../styles/hamburger_button.css";
 import "../../styles/close_button.css";
 
@@ -60,9 +61,16 @@ export default function NavBar() {
   }, [isMenuOpen]);
 
   return (
-    <header className="w-full max-w-screen-2xl" ref={container}>
+    <header className="absolute w-full max-w-screen-2xl" ref={container}>
       <div className="flex justify-between items-center h-26 p-4 pr-8 pl-8">
-        <Image src={Logo} alt=".JB Logo" className="h-20 w-20 p-3" />
+        <Link className="z-10" href={"/"}>
+          <Image
+            src={Logo}
+            alt=".JB Logo"
+            className="h-20 w-20 p-3 hvr-pulse"
+          />
+        </Link>
+
         <div className="z-10 cursor-pointer">
           <div className="hamburger-icon" onClick={toggleMenu}>
             <span className="line line-1"></span>
@@ -75,7 +83,9 @@ export default function NavBar() {
       <div className="menu-overlay">
         <div className="w-full max-w-screen-2xl ">
           <div className="flex justify-between items-center h-26 p-4 pr-8 pl-8">
-            <Image src={Logo} alt=".JB Logo" className="h-20 w-20 p-3" />
+            <Link className="z-10" href={"/"}>
+              <Image src={Logo} alt=".JB Logo" className="h-20 w-20 p-3" />
+            </Link>
             <div className="z-10 cursor-pointer">
               <div className="close-container" onClick={toggleMenu}>
                 <div className="leftright"></div>
@@ -88,7 +98,7 @@ export default function NavBar() {
             {menuLinks.map((link, index) => (
               <div key={index} className="menu-link-item">
                 <div className="menu-link-item-holder" onClick={toggleMenu}>
-                  <Link className="menu-link" href={link.path}>
+                  <Link className="menu-link pl-4" href={link.path}>
                     {" / " + link.label}
                   </Link>
                 </div>
