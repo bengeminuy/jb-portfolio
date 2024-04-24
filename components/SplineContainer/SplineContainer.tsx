@@ -33,7 +33,7 @@ export default function SplineContainer() {
   const pathname = usePathname();
   const [isLoaded, setIsLoaded] = useState(false);
   const [isChangingRoute, setIsChangingRoute] = useState(false);
-  const [lastPath, setLastPath] = useState("");
+  const [lastPath, setLastPath] = useState<String | null>(null);
 
   const variants = {
     visible: { opacity: 1 },
@@ -41,10 +41,10 @@ export default function SplineContainer() {
   };
 
   function onLoad(spline: any) {
+    console.log("Loaded");
     const avatarObject = spline.findObjectById(
       "6fde2716-a9fb-415f-a17a-74540842d2ba"
     ) as SplineObject;
-    console.log(avatarObject);
     avatar.current = avatarObject;
     if (avatar.current) {
       setIsLoaded(true);
@@ -53,6 +53,7 @@ export default function SplineContainer() {
 
   useEffect(() => {
     const updateAvatarPosition = () => {
+      console.log("updating position");
       if (avatar.current) {
         switch (pathname) {
           case "/about":
@@ -91,6 +92,7 @@ export default function SplineContainer() {
             avatar.current.rotation.z = 0;
             break;
           default:
+            console.log("default position");
             avatar.current.position.x = 400;
             avatar.current.position.y = -800;
             avatar.current.position.z = -40;
