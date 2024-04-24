@@ -3,16 +3,13 @@
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import Loading from "../Loading/Loading";
 import { Application } from "@splinetool/runtime";
-import Script from "next/script";
 
 export default function SplineContainer() {
   const animation = useAnimation();
   const avatar = useRef();
 
   const pathname = usePathname();
-  const [isLoaded, setIsLoaded] = useState(false);
   const [lastPath, setLastPath] = useState(null);
 
   const variants = {
@@ -30,7 +27,15 @@ export default function SplineContainer() {
           "6fde2716-a9fb-415f-a17a-74540842d2ba"
         );
         avatar.current = avatarObject;
-        setIsLoaded(true);
+        avatar.current.position.x = 400;
+        avatar.current.position.y = -800;
+        avatar.current.position.z = -40;
+        avatar.current.scale.x = 3;
+        avatar.current.scale.y = 3;
+        avatar.current.scale.z = 3;
+        avatar.current.rotation.x = 0;
+        avatar.current.rotation.y = 0;
+        avatar.current.rotation.z = 0;
       });
   }, []);
 
@@ -99,15 +104,12 @@ export default function SplineContainer() {
   }, [pathname, animation, lastPath]);
 
   return (
-    <>
-      <motion.div
-        animate={animation}
-        variants={variants}
-        className="absolute top-0 h-full w-full -z-5"
-      >
-        {!isLoaded && <Loading />}
-        <canvas id="spline" />
-      </motion.div>
-    </>
+    <motion.div
+      animate={animation}
+      variants={variants}
+      className="absolute top-0 h-full w-full -z-5"
+    >
+      <canvas id="spline" />
+    </motion.div>
   );
 }
