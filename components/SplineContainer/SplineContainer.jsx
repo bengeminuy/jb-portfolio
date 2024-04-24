@@ -21,7 +21,6 @@ export default function SplineContainer() {
   };
 
   useEffect(() => {
-    console.log("call useEffect initially");
     const canvas = document.getElementById("spline");
     const spline = new Application(canvas);
     spline
@@ -31,9 +30,7 @@ export default function SplineContainer() {
           "6fde2716-a9fb-415f-a17a-74540842d2ba"
         );
         avatar.current = avatarObject;
-        if (avatar.current) {
-          setIsLoaded(true);
-        }
+        setIsLoaded(true);
       });
   }, []);
 
@@ -99,7 +96,7 @@ export default function SplineContainer() {
         updateAvatarPosition();
       }, 500);
     }
-  }, [isLoaded, pathname, animation, lastPath]);
+  }, [pathname, animation, lastPath]);
 
   return (
     <>
