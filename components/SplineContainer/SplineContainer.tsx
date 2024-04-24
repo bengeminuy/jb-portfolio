@@ -56,6 +56,16 @@ export default function SplineContainer() {
       if (avatar.current) {
         switch (pathname) {
           case "/about":
+            avatar.current.position.x = 0;
+            avatar.current.position.y = -1300;
+            avatar.current.position.z = -40;
+            avatar.current.scale.x = 3.5;
+            avatar.current.scale.y = 3.5;
+            avatar.current.scale.z = 3.5;
+            avatar.current.rotation.x = 0;
+            avatar.current.rotation.y = 1.5;
+            avatar.current.rotation.z = 0;
+            break;
           case "/skills":
             avatar.current.position.x = 0;
             avatar.current.position.y = -2350;

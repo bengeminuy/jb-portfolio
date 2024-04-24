@@ -8,7 +8,7 @@ import "../../styles/action_buttons.css";
 export default function Contact() {
   return (
     <main className="flex flex-col gap-4 2xl:pt-32 xl:pt-28 xl:pr-16 2xl:pr-0 w-full max-w-screen-2xl items-end">
-      <h1 className="2xl:text-8xl xl:text-6xl leading-normal font-bold w-max opacity-50">
+      <h1 className="2xl:text-8xl xl:text-6xl leading-normal font-bold w-max opacity-80">
         CONTACT
         <span className="2xl:text-4xl xl:text-3xl align-top pl-2">05</span>
       </h1>
