@@ -46,7 +46,7 @@ export default function About() {
         </p>
       </div>
       <div className="flex flex-row z-1 gap-12 justify-end">
-        <Link className="action-btn" href="/about">
+        <Link className="action-btn" href="/skills">
           Check my skills
         </Link>
         <button className="action-btn">Download my resume</button>
