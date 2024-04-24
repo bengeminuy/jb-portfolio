@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Loading from "../Loading/Loading";
 import { Application } from "@splinetool/runtime";
+import Script from "next/script";
 
 export default function SplineContainer() {
   const animation = useAnimation();
@@ -12,7 +13,6 @@ export default function SplineContainer() {
 
   const pathname = usePathname();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isChangingRoute, setIsChangingRoute] = useState(false);
   const [lastPath, setLastPath] = useState(null);
 
   const variants = {
@@ -21,12 +21,13 @@ export default function SplineContainer() {
   };
 
   useEffect(() => {
+    console.log("call useEffect initially");
     const canvas = document.getElementById("spline");
-    const app = new Application(canvas);
-    app
+    const spline = new Application(canvas);
+    spline
       .load("https://prod.spline.design/T7YOHVWBaA8AOKAk/scene.splinecode")
       .then(() => {
-        const avatarObject = app.findObjectById(
+        const avatarObject = spline.findObjectById(
           "6fde2716-a9fb-415f-a17a-74540842d2ba"
         );
         avatar.current = avatarObject;
@@ -90,29 +91,26 @@ export default function SplineContainer() {
     };
     if (lastPath !== pathname) {
       setLastPath(pathname);
-      setIsChangingRoute(true);
+      animation.start("hidden");
+      setTimeout(() => {
+        animation.start("visible");
+      }, 1000);
       setTimeout(() => {
         updateAvatarPosition();
       }, 500);
     }
-
-    if (isChangingRoute) {
-      animation.start("hidden");
-      setTimeout(() => {
-        animation.start("visible");
-        setIsChangingRoute(false);
-      }, 1000);
-    }
-  }, [isLoaded, pathname, isChangingRoute, animation, lastPath]);
+  }, [isLoaded, pathname, animation, lastPath]);
 
   return (
-    <motion.div
-      animate={animation}
-      variants={variants}
-      className="absolute top-0 h-full w-full -z-5"
-    >
-      {!isLoaded && <Loading />}
-      <canvas id="spline" />
-    </motion.div>
+    <>
+      <motion.div
+        animate={animation}
+        variants={variants}
+        className="absolute top-0 h-full w-full -z-5"
+      >
+        {!isLoaded && <Loading />}
+        <canvas id="spline" />
+      </motion.div>
+    </>
   );
 }
