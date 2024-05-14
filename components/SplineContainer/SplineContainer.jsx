@@ -67,6 +67,10 @@ export default function SplineContainer() {
             break;
           case "/work":
           case "/projects":
+            avatar.current.scale.x = 0;
+            avatar.current.scale.y = 0;
+            avatar.current.scale.z = 0;
+            break;
           case "/contact":
             avatar.current.position.x = 0;
             avatar.current.position.y = -1000;
